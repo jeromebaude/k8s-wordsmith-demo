@@ -1,6 +1,8 @@
 package main
 
 import (
+  "os"
+	"strconv"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -13,12 +15,18 @@ import (
 func main() {
 	rand.Seed(time.Now().UnixNano())
 
-	fwd := &forwarder{"words", 8080}
+	wordPort, err := strconv.Atoi(os.Getenv("WORDS_PORT"))
+	if err != nil {
+		fmt.Printf("Error converting '%s': %s", wordPort, err.Error())
+		os.Exit(1)
+	}
+	fwd := &forwarder{os.Getenv("WORDS_HOST"), wordPort}
 	http.Handle("/words/", http.StripPrefix("/words", fwd))
 	http.Handle("/", http.FileServer(http.Dir("static")))
 
-	fmt.Println("Listening on port 80")
-	http.ListenAndServe(":80", nil)
+  addr := fmt.Sprintf("%s:%s", os.Getenv("BIND_HTTP_HOST"), os.Getenv("BIND_HTTP_PORT"))
+	fmt.Printf("Listening on '%s'\n", addr)
+	http.ListenAndServe(addr, nil)
 }
 
 type forwarder struct {

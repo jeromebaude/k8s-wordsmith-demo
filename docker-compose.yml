@@ -7,7 +7,7 @@ services:
     deploy:
       replicas: 5
     environment:
-      APP_VERSION: 0.2
+      DB_HOST: db
   web:
     image: qnib/k8s-wordsmith-web
     ports:

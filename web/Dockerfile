@@ -6,7 +6,10 @@ RUN go build dispatcher.go
 
 # RUN
 FROM alpine:edge
-
+ENV WORDS_HOST=words
+ENV WORDS_PORT=8080
+ENV BIND_HTTP_PORT=80
+ENV BIND_HTTP_HOST=0.0.0.0
 EXPOSE 80
 CMD ["/dispatcher"]
 
