@@ -40,6 +40,8 @@ function getWord($http, $timeout, url, callback) {
 function word(resp) {
   return {
     word: resp.data.word,
-    hostname: resp.headers()["source"]
+    app_version: "(v" + resp.data.app_version +")",
+    hostname: resp.data.hostname,
+    source: resp.headers()["source"]
   };
 }

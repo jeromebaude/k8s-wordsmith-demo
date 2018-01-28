@@ -90,9 +90,26 @@ body {
 .result .hostname {
 	position: absolute;
 	width: 100%;
-	left: 0;
+	left: -50px;
 	bottom: 8px;
 	font-size: 0.8em;
+	height: 14px;
+}
+
+.result .source {
+	position: absolute;
+	width: 100%;
+	left: 50px;
+	bottom: 8px;
+	font-size: 0.8em;
+	height: 14px;
+}
+.result .app_version {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 32px;
+  font-size: 20px;
 	height: 14px;
 }
 

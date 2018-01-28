@@ -4,7 +4,9 @@ import com.google.common.base.Suppliers;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
+
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.sql.*;
 import java.util.NoSuchElementException;
@@ -38,7 +40,8 @@ public class Main {
 
     private static HttpHandler handler(Supplier<String> word) {
         return t -> {
-            String response = "{\"word\":\"" + word.get() + "\"}";
+            String response = "{\"word\":\"" + word.get() + "\",\"hostname\":\"" + InetAddress.getLocalHost().getHostName()
++ "\",\"app_version\":\"" + System.getenv("APP_VERSION") + "\"}";
             byte[] bytes = response.getBytes(Charsets.UTF_8);
 
             System.out.println(response);

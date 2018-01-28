@@ -1,0 +1,19 @@
+pipeline:
+  db:
+    image: docker:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker build -t qnib/k8s-wordsmith-db db
+  web:
+    image: docker:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker build -t qnib/k8s-wordsmith-web web
+  api:
+    image: docker:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker build -t qnib/k8s-wordsmith-api words
