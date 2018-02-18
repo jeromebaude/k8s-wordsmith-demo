@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: db
-        image: dockersamples/k8s-wordsmith-db
+        image: qnib/k8s-wordsmith-db
         ports:
         - containerPort: 5432
           name: db
@@ -35,7 +35,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: words
+  name: api
   labels:
     app: words-api
 spec:
@@ -50,7 +50,7 @@ spec:
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: words
+  name: api
   labels:
     app: words-api
 spec:
@@ -61,8 +61,8 @@ spec:
         app: words-api
     spec:
       containers:
-      - name: words
-        image: dockersamples/k8s-wordsmith-api
+      - name: api
+        image: qnib/k8s-wordsmith-api
         ports:
         - containerPort: 8080
           name: api
@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: dockersamples/k8s-wordsmith-web
+        image: qnib/k8s-wordsmith-web
         ports:
         - containerPort: 80
           name: words-web

@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app: words-web
+spec:
+  template:
+    metadata:
+      labels:
+        app: words-web
+    spec:
+      containers:
+      - name: web
+        image: qnib/k8s-wordsmith-web
+        ports:
+        - containerPort: 80
+          name: words-web

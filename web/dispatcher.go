@@ -15,12 +15,12 @@ import (
 func main() {
 	rand.Seed(time.Now().UnixNano())
 
-	wordPort, err := strconv.Atoi(os.Getenv("WORDS_PORT"))
+	wordPort, err := strconv.Atoi(os.Getenv("API_PORT"))
 	if err != nil {
 		fmt.Printf("Error converting '%s': %s", wordPort, err.Error())
 		os.Exit(1)
 	}
-	fwd := &forwarder{os.Getenv("WORDS_HOST"), wordPort}
+	fwd := &forwarder{os.Getenv("API_HOST"), wordPort}
 	http.Handle("/words/", http.StripPrefix("/words", fwd))
 	http.Handle("/", http.FileServer(http.Dir("static")))
 
