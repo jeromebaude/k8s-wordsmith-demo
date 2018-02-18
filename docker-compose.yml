@@ -2,17 +2,18 @@ version: '3.3'
 services:
   db:
     build: db
-    image: qnib/k8s-wordsmith-db
+    image: qnib/k8s-wordsmith-db:${TAG-latest}
   api:
     build: api
-    image: qnib/k8s-wordsmith-api
+    image: qnib/k8s-wordsmith-api:${TAG-latest}
     deploy:
       replicas: 5
     environment:
       DB_HOST: db
+      APP_VERSION: 0.3
   web:
     build: web
-    image: qnib/k8s-wordsmith-web
+    image: qnib/k8s-wordsmith-web:${TAG-latest}
     environment:
       API_HOST: api
     ports:
