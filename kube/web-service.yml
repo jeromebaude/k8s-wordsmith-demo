@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: web
+  name: kube-web
   labels:
     app: words-web
 spec:
   ports:
     - port: 8081
       targetPort: 80
-      name: web
+      name: kube-web
   selector:
     app: words-web
   type: LoadBalancer

@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: web
+  name: kube-web
   labels:
     app: words-web
 spec:
@@ -11,8 +11,11 @@ spec:
         app: words-web
     spec:
       containers:
-      - name: web
+      - name: kube-web
         image: qnib/k8s-wordsmith-web
         ports:
         - containerPort: 80
           name: words-web
+        env:
+        - name: API_HOST
+          value: kube-api

@@ -31,3 +31,15 @@ rs/api-5f75c58954   5         5         5         2m
 rs/db-675d6c6dd8    1         1         1         2m
 rs/web-65b986cd86   1         1         1         2m
 ```
+
+To remove the service.
+
+```
+$ kubectl delete -f .
+deployment "api" deleted
+service "api" deleted
+deployment "db" deleted
+service "db" deleted
+deployment "web" deleted
+service "web" deleted
+```

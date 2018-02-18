@@ -122,3 +122,15 @@ rs/web-65b986cd86   1         1         1         2m
 
 
 Now browse to http://localhost:8081 and you will see the same site.
+
+To remove the service.
+
+```
+$ kubectl delete -f .
+deployment "api" deleted
+service "api" deleted
+deployment "db" deleted
+service "db" deleted
+deployment "web" deleted
+service "web" deleted
+```
