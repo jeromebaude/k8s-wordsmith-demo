@@ -10,7 +10,7 @@ services:
       replicas: 5
     environment:
       DB_HOST: db
-      APP_VERSION: 0.3
+      #APP_VERSION: 0.2
   web:
     build: web
     image: qnib/k8s-wordsmith-web:${TAG-latest}
