@@ -25,7 +25,7 @@ ENV APP_VERSION=0.1
 ENV DB_HOST=db
 ENV DB_PORT=5432
 
-RUN apk add --no-cache openjdk8-jre="8.151.12-r0" && rm usr/lib/libgif.so.7.0.0 usr/lib/libtasn1.so.6.5.4
+RUN apk add --no-cache openjdk8-jre="8.151.12-r0" && rm usr/lib/libgif.so.7.0.0
 ## To be able to debug (e.g. run `env`) the container ENTRYPOINT was changed into CMD
 CMD ["java", "-Xmx8m", "-Xms8m", "-jar", "./target/api.jar"]
 EXPOSE 8080

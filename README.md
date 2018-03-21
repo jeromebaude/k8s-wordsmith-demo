@@ -17,8 +17,9 @@ The demo app runs across three containers:
 The only requirement to build and run the app from source is Docker. Clone this repo and use Docker Compose to build all the images:
 
 ```
+git clone https://github.com/jeromebaude/k8s-wordsmith-demo
 cd k8s-wordsmith-demo
-
+git checkout update/container_to_kube
 docker-compose build
 ```
 
