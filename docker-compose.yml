@@ -1,20 +1,20 @@
 version: '3.3'
 services:
   db:
-    build: db
-    image: jeromebaude/k8s-wordsmith-db:${TAG-latest}
+#    build: db
+    image: jeromebaude/k8s-wordsmith-db
   api:
-    build: api
-    image: jeromebaude/k8s-wordsmith-api:${TAG-latest}
+#    build: api
+    image: jeromebaude/k8s-wordsmith-api
     deploy:
       replicas: 5
     environment:
       DB_HOST: db
       #APP_VERSION: 0.2
   web:
-    build: web
-    image: jeromebaude/k8s-wordsmith-web:${TAG-latest}
+#    build: web
+    image: jeromebaude/k8s-wordsmith-web
     environment:
       API_HOST: api
     ports:
-     - "8080:80"
+     - "8081:80"
